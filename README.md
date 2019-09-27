@@ -55,3 +55,7 @@ yum install pcre-devel openssl-devel gcc curl
 #重启
 /yourpath/lion/nginx.sh restart
 ```
+
+## 5.nginx-lua生命周期
+
+![image](https://github.com/swoole-boot/swoole-boot/blob/master/life.png?raw=true)
