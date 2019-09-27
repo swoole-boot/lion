@@ -1,0 +1,9 @@
+server {
+    server_name www.lion.com.conf;
+    listen 80;
+
+    location / {
+        default_type 'text/plain';
+        content_by_lua_file /data/swoole-boot/lion/lion.lua;
+    }
+}
