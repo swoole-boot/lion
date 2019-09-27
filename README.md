@@ -55,3 +55,7 @@ yum install pcre-devel openssl-devel gcc curl
 #重启
 /yourpath/lion/nginx.sh restart
 ```
+
+## 5.nginx-lua生命周期
+
+![image]()
