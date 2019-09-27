@@ -58,4 +58,4 @@ yum install pcre-devel openssl-devel gcc curl
 
 ## 5.nginx-lua生命周期
 
-![image]()
+![image](https://github.com/swoole-boot/swoole-boot/blob/master/life.png?raw=true)
