@@ -44,9 +44,13 @@ function _M.content()
     local json  = require "cjson"
     local ext   = require "lion.ext.table"
     local http   = require "lion.ext.http"
+
     local consul = share.get(ngx.shared.config,'consul')
-    local status,body,header = http.request("get","http://www.baidu.com")
-    return json.encode(body)
+    return json.encode(consul)
+
+    -- ngx.header['Content-Type']="text/html;charset=utf-8"
+    -- local status,body,header = http.request("get","http://www.baidu.com")
+    -- return body
 end
 
 function _M.balancer()
