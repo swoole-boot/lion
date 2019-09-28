@@ -1,12 +1,32 @@
 #!/bin/bash
 #resty目录
-RESTYPATH=/usr/local/openresty
+#RESTYPATH=/usr/local/openresty
+RESTYPATH=/usr/local/Cellar/openresty/1.15.8.2
 #nginx
 NGINX="$RESTYPATH/nginx/sbin/nginx"
 #lion项目目录
 LIONPATH=$(cd `dirname $0`; pwd)
 
 CMDMAP=("start" "stop" "reload" "restart")
+OSMAP=("mac" "centos" "ubuntu")
+
+#获取操作系统
+getOs() {
+    uname=`uname  -a`
+
+    if [[ $uname =~ "Darwin" ]]
+    then
+        return 0
+    elif [[ $uname =~ "centos" ]]
+    then
+        return 1
+    elif [[ $uname =~ "ubuntu" ]]
+    then
+        return 2
+    fi
+
+    return 1
+}
 
 #获取命令
 getCommand() {
