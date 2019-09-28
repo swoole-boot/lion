@@ -45,7 +45,7 @@ yum install pcre-devel openssl-devel gcc curl
   -- app                应用目录
      -- access          init及入口文件目录
         -- init.lua     init_by_lua_file脚本
-        -- lion.lua     content_by_lua_file脚本
+        -- content.lua  content_by_lua_file脚本
      -- logs            日志目录
   -- nginx.sh           nginx进程管理工具
 ```
