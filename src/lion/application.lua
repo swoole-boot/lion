@@ -6,8 +6,7 @@
 -- To change this template use File | Settings | File Templates.
 --
 local _M = {
-    _VERSION = '1.x',
-    name     = 'lion'
+    _VERSION = '1.x'
 }
 
 

@@ -1,0 +1,17 @@
+{
+    "name"    : "lion",
+    "version" : "1.0.0",
+    "consul"  : {
+        "host"      : "127.0.0.1",
+        "port"      : 8500,
+        "timeout"   : 3
+    }
+}
+
+
+
+
+
+
+
+
