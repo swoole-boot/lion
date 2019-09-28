@@ -42,8 +42,11 @@ end
 function _M.content()
     local share = require "lion.ext.shared"
     local json  = require "cjson"
+    local ext   = require "lion.ext.table"
+    local http   = require "lion.ext.http"
     local consul = share.get(ngx.shared.config,'consul')
-    return json.encode(consul)
+    local status,body,header = http.request("get","http://www.baidu.com")
+    return json.encode(body)
 end
 
 function _M.balancer()
