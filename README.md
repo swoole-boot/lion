@@ -34,13 +34,20 @@ yum install pcre-devel openssl-devel gcc curl
 
 ```
 -- lion
-  -- libs       第三方lua包目录
-  -- clibs      第三方c包目录
-  -- config     nginx及servers配置目录
-  -- src        源码包目录
-     -- lion    lion源码包目录
-  -- lion.lua   入口文件
-  -- nginx.sh   nginx进程管理工具
+  -- libs               第三方lua包目录
+  -- clibs              第三方c包目录
+  -- config             配置目录
+     -- nginx.conf      nginx配置文件
+     -- servers         虚拟主机目录
+     -- lion.json       lion应用配置文件，会在init_by_lua_file脚本添加nginx.shared.config中
+  -- src                源码包目录
+     -- lion            lion源码包目录
+  -- app                应用目录
+     -- access          init及入口文件目录
+        -- init.lua     init_by_lua_file脚本
+        -- lion.lua     content_by_lua_file脚本
+     -- logs            日志目录
+  -- nginx.sh           nginx进程管理工具
 ```
 
 ## 4.nginx进程管理
