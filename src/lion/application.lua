@@ -18,6 +18,7 @@ function _M.init(configFileName)
     -- 文件io驱动
     local file = require "lion.ext.file"
     local json   = require "cjson"
+    ngx.log(ngx.INFO,"start read json")
     -- 读取配置文件
     local config = file.read(configFileName)
     ---放入nginx cache
@@ -44,7 +45,7 @@ function _M.content()
     local json  = require "cjson"
     local ext   = require "lion.ext.table"
     local http   = require "lion.ext.http"
-
+    ngx.log(ngx.INFO,"start content json")
     local consul = share.get(ngx.shared.config,'consul')
     return json.encode(consul)
 
@@ -58,7 +59,8 @@ function _M.balancer()
 end
 
 function _M.headerFilter()
-
+    local shared = require "lion.ext.shared"
+    ngx.header["Server"] = shared.get(ngx.shared.config,"name")
 end
 
 function _M.bodyFilter()

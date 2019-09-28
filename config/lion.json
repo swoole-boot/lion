@@ -1,5 +1,5 @@
 {
-    "name"    : "lion",
+    "name"    : "lion-gateway",
     "version" : "1.0.0",
     "consul"  : {
         "host"      : "127.0.0.1",
