@@ -1,5 +1,4 @@
 #!/bin/bash
-
 CMDMAP=("start" "stop" "reload" "restart")
 OSMAP=("mac" "centos" "ubuntu")
 
@@ -36,8 +35,8 @@ fi
 NGINX="$RESTYPATH/nginx/sbin/nginx"
 #lion项目目录
 LIONPATH=$(cd `dirname $0`; pwd)
-#lion项目临时目录
-LIONTMPPATH="$LIONPATH/tmp"
+#lion项目应用目录
+LIONTMPPATH="$LIONPATH/app"
 
 #获取命令
 getCommand() {
