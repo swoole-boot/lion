@@ -1,11 +1,4 @@
 #!/bin/bash
-#resty目录
-#RESTYPATH=/usr/local/openresty
-RESTYPATH=/usr/local/Cellar/openresty/1.15.8.2
-#nginx
-NGINX="$RESTYPATH/nginx/sbin/nginx"
-#lion项目目录
-LIONPATH=$(cd `dirname $0`; pwd)
 
 CMDMAP=("start" "stop" "reload" "restart")
 OSMAP=("mac" "centos" "ubuntu")
@@ -27,6 +20,24 @@ getOs() {
 
     return 1
 }
+
+#resty目录
+getOs
+if [[ $? == 0 ]]
+then
+    #mac
+    RESTYPATH=/usr/local/Cellar/openresty/1.15.8.2
+else
+    #centos
+    RESTYPATH=/usr/local/openresty
+fi
+
+#nginx
+NGINX="$RESTYPATH/nginx/sbin/nginx"
+#lion项目目录
+LIONPATH=$(cd `dirname $0`; pwd)
+#lion项目临时目录
+LIONTMPPATH="$LIONPATH/tmp"
 
 #获取命令
 getCommand() {
@@ -55,13 +66,13 @@ getCommand() {
 checkConfig() {
   #nginx配置文件
   NGINXCONF="$LIONPATH/config/nginx.conf"
-  RESULT=$($NGINX -t -c $NGINXCONF 2>&1)
+  RESULT=$($NGINX -t -p $LIONTMPPATH -c $NGINXCONF 2>&1)
   SUCCESSTAG="successful"
   if [[ $RESULT =~ $SUCCESSTAG ]]
   then
     return 1
   fi
-    $NGINX -t -c $NGINXCONF
+    $NGINX -t -p $LIONTMPPATH -c $NGINXCONF
     return 0
 }
 
@@ -84,8 +95,13 @@ start() {
   fi
 
   echo -e "\033[33m start the openresty service \033[0m"
-  $NGINX -c $NGINXCONF
-  echo -e "\033[32m start success \033[0m"
+  RESULT=$($NGINX -p $LIONTMPPATH -c $NGINXCONF 2>&1)
+  if [[ $RESULT =~ "[error]" ]]
+  then
+    echo -e "\033[31m ${RESULT} \033[0m"
+  else
+    echo -e "\033[32m start success \033[0m"
+  fi
 }
 
 stop() {
@@ -97,8 +113,13 @@ stop() {
   fi
 
   echo -e "\033[33m stop the openresty service \033[0m"
-  $NGINX -s stop
-  echo -e "\033[32m stop success \033[0m"
+  RESULT=$($NGINX -s quit 2>&1)
+  if [[ $RESULT =~ "[error]" ]]
+  then
+    echo -e "\033[31m ${RESULT} \033[0m"
+  else
+    echo -e "\033[32m stop success \033[0m"
+  fi
 }
 
 reload() {
@@ -110,8 +131,14 @@ reload() {
   fi
 
   echo -e "\033[33m reload the openresty service \033[0m"
-  $NGINX -s reload
-  echo -e "\033[32m reload success \033[0m"
+
+  RESULT=$($NGINX -s reload 2>&1)
+  if [[ $RESULT =~ "[error]" ]]
+  then
+    echo -e "\033[31m ${RESULT} \033[0m"
+  else
+    echo -e "\033[32m reload success \033[0m"
+  fi
 }
 
 restart() {
