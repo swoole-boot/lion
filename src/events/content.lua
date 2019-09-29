@@ -9,6 +9,7 @@ local config = require "lion.ext.config"
 local json  = require "cjson"
 local ext   = require "lion.ext.table"
 local http   = require "lion.ext.http"
+local consul = require "lion.client.consul"
 
 local _M ={
     _VERSION = "1.0.0"
@@ -17,10 +18,13 @@ local _M ={
 --- content_by_lua*
 --
 function _M.run()
-    ngx.log(ngx.INFO,"start content json")
-    -- local consul = config.get('consul')
-    local enableApp = config.get('enableApp')
-    return tostring(enableApp)
+    local consulConfig = config.get('consul')
+    local client = consul:new(nil,consulConfig)
+
+    return json.encode(client)
+
+    -- local enableApp = config.get('enableApp')
+     --return tostring(enableApp)
 
     -- ngx.header['Content-Type']="text/html;charset=utf-8"
     -- local status,body,header = http.request("get","http://www.baidu.com")

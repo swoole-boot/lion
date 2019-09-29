@@ -12,9 +12,14 @@ local _M = {
 }
 
 function _M:new(controller,config)
-    controller = controller or Controller:new(controller,config)
+    controller = controller or Controller:new(controller)
     setmetatable(controller, self)
     self.__index = self
+
+    if config and ext.isTable(config) then
+        self = ext.block(self,config)
+    end
+
     return controller
 end
 

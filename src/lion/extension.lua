@@ -12,10 +12,10 @@ local _M = { _VERSION = '1.x' }
 -- @param value
 --
 function _M.empty(value)
-    if type(value) == 'table' then
+    if type(value) == "table" then
         return next(value) == nil
     end
-    return value == nil or value == false or value == ''
+    return value == nil or value == false or value =="" or value == ngx.null or value == "null"
 end
 
 --- 判断类型是否为table

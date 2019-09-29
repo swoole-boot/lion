@@ -20,11 +20,10 @@ local _M ={
 --
 function _M.set(share, key, value, timeout)
     timeout = timeout or 0
-    value = json.encode(value)
     if timeout == 0 then
-        return share:set(key,value)
+        return share:set(key,json.encode(value))
     end
-    return share:set(key,value,timeout)
+    return share:set(key, json.encode(value), timeout)
 end
 
 --- 批量存储
@@ -34,7 +33,7 @@ end
 function _M.mset(share, table)
     local success,error,forcible = true, nil, nil
     for key,value in pairs(table) do
-        success,error,forcible = _M.set(share,key,value)
+        success,error,forcible = _M.set(share, key, value)
         if success == false then
             break;
         end
