@@ -1,6 +1,7 @@
 {
-    "name"    : "lion-gateway",
-    "version" : "1.0.0",
+    "name"      : "lion-gateway",
+    "version"   : "1.0.0",
+    "enableApp" : true ,
     "consul"  : {
         "host"      : "127.0.0.1",
         "port"      : 8500,

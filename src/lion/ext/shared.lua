@@ -1,4 +1,4 @@
---
+-- ngx.shared扩展，支持存table
 -- Created by IntelliJ IDEA.
 -- User: qiang
 -- Date: 2019/9/28
@@ -18,7 +18,7 @@ local _M ={
 -- @param value
 -- @param timeout
 --
-function _M.set(share,key,value,timeout)
+function _M.set(share, key, value, timeout)
     timeout = timeout or 0
     value = json.encode(value)
     if timeout == 0 then
@@ -31,7 +31,7 @@ end
 -- @param share
 -- @param table
 --
-function _M.mset(share,table)
+function _M.mset(share, table)
     local success,error,forcible = true, nil, nil
     for key,value in pairs(table) do
         success,error,forcible = _M.set(share,key,value)
@@ -46,7 +46,7 @@ end
 -- @param share
 -- @param key
 --
-function _M.get(share,key)
+function _M.get(share, key)
     local value, flags = share:get(key)
     if ext.empty(value) then
         return value

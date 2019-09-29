@@ -1,4 +1,4 @@
---
+-- table扩展
 -- Created by IntelliJ IDEA.
 -- User: qiang
 -- Date: 2019/9/28
@@ -35,6 +35,23 @@ function _M.merge(...)
     end
 
     return origin
+end
+
+--- table洗牌
+-- @param arrayList
+--
+function _M.shuffle(arrayList)
+    local length = #arrayList
+
+    if length == 1 then
+        return arrayList
+    end
+
+    for i=1, length do
+        local j = math.random(i,length)
+        arrayList[i], arrayList[j] = arrayList[j], arrayList[i]
+    end
+    return arrayList
 end
 
 return _M
