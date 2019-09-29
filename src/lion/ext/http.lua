@@ -1,4 +1,4 @@
---
+-- Http扩展
 -- Created by IntelliJ IDEA.
 -- User: qiang
 -- Date: 2019/9/28
@@ -26,16 +26,28 @@ function _M.ip2long(ip)
     return num
 end
 
+
 --- 构建http参数
 -- @param params
+-- @param url
 --
-function _M.httpBuildQuery(params)
+function _M.httpBuildQuery(params, url)
+    url = url or ""
+
     if ext.empty(params) then
-        return ""
+        return url
     end
 
     if not ext.isTable(params) then
-        return params
+        if ext.empty(url) then
+            return params
+        end
+
+        if string.match(url,"?") then
+            return url.."&"..params
+        else
+            return url.."?"..params
+        end
     end
 
     local query = {}
@@ -47,7 +59,15 @@ function _M.httpBuildQuery(params)
         end
     end
 
-    return table.concat(query,"&")
+    if ext.empty(url) then
+        return table.concat(query,"&")
+    end
+
+    if string.match(url,"?") then
+        return url.."&"..table.concat(query,"&")
+    else
+        return url.."?"..table.concat(query,"&")
+    end
 end
 
 --- 发http请求
@@ -59,11 +79,20 @@ end
 --
 function _M.request(method,url,params,headers,options)
     local httpc = http.new()
+    method  = string.upper(method)
     options = options or {}
     headers = headers or {}
+
+    local body = ""
+    if method == "GET" then
+        url = _M.httpBuildQuery(params, url)
+    else
+        body = _M.httpBuildQuery(params)
+    end
+
     options = tableExt.merge({
-        method = string.upper(method),
-        body = _M.httpBuildQuery(params),
+        method = method,
+        body = body,
         headers = tableExt.merge({
             ["Content-Type"] = "application/x-www-form-urlencoded",
         },headers),

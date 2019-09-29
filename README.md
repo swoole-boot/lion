@@ -42,10 +42,9 @@ yum install pcre-devel openssl-devel gcc curl
      -- lion.json       lion应用配置文件，会在init_by_lua_file脚本添加nginx.shared.config中
   -- src                源码包目录
      -- lion            lion源码包目录
-  -- app                应用目录
-     -- access          init及入口文件目录
-        -- init.lua     init_by_lua_file脚本
-        -- content.lua  content_by_lua_file脚本
+     -- app             mc目录,可以做mock，也可以做http(s)接口开发
+     -- events          ngx_lua生命周期事件handler，可以自行扩展，在相应生命周期会执行相应的run方法
+  -- data               临时数据目录
      -- logs            日志目录
   -- nginx.sh           nginx进程管理工具
 ```

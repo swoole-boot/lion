@@ -36,7 +36,7 @@ NGINX="$RESTYPATH/nginx/sbin/nginx"
 #lion项目目录
 LIONPATH=$(cd `dirname $0`; pwd)
 #lion项目应用目录
-LIONTMPPATH="$LIONPATH/app"
+LIONTMPPATH="$LIONPATH/data"
 
 #获取命令
 getCommand() {
