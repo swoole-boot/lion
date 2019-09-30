@@ -45,16 +45,15 @@ function _M.sysncConsul2NgxShared()
     local function _syncService2NgxShared(premature)
         local lock = require("resty.lock")
         local driver = lock:new("cache",{
-            timeout = 1,             --如果1秒还没有获得锁，属于超时
-            exptime = delay + 1
+            timeout  = 0,          --如果1秒还没有获得锁，属于超时
+            exptime  = delay
         })
 
         --加锁
         local isLock,_ = driver:lock("sync_service_2_ngx_shared")
         --获得锁
-        if isLock == 0 then
+        if isLock ~= nil then
             _M.syncServiceFromConsul2NgxShared()
-            driver:unlock()
         end
 
         return
@@ -101,7 +100,7 @@ function _M.syncServiceFromConsul2NgxShared()
 
     --更新到ngx.shared.cache
     shared.set(dict,consulConfig.serviceListKey,serviceList)
-    ngx.log(ngx.INFO,"sysnc consul service to ngx.shared.cache,config:",json.encode(serviceList))
+    ngx.log(ngx.INFO,"sysnc consul service to ngx.shared.cache")
 end
 
 ---从配置中拿服务配置数据并放到http header中
