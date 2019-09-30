@@ -16,7 +16,7 @@ local _M = {
 }
 
 --- 将ip转换为值
--- @param ip
+--- @param ip  string
 --
 function _M.ip2long(ip)
     local num = 0
@@ -28,8 +28,8 @@ end
 
 
 --- 构建http参数
--- @param params
--- @param url
+--- @param params table|string
+--- @param url    string
 --
 function _M.httpBuildQuery(params, url)
     url = url or ""
@@ -71,11 +71,11 @@ function _M.httpBuildQuery(params, url)
 end
 
 --- 发http请求
--- @param string method
--- @param string url
--- @param table  params
--- @param table  headers
--- @param table  options
+--- @param  method  string
+--- @param  url     string
+--- @param  params  table
+--- @param  headers table
+--- @param  options table
 --
 function _M.request(method,url,params,headers,options)
     local httpc = http.new()

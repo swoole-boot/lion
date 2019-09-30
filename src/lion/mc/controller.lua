@@ -9,6 +9,7 @@ local ext       = require "lion.extension"
 
 local _M = {
     _VERSION = "1.0.0",
+    context  = ngx.ctx
 }
 
 ---

@@ -5,7 +5,7 @@
 -- Time: 10:37
 -- To change this template use File | Settings | File Templates.
 --
-local Controller = require "lion.content.controller"
+local Controller = require "lion.mv.controller"
 
 local _M = {
     _VERSION = "1.0.0"
