@@ -100,7 +100,7 @@ function _M.syncServiceFromConsul2NgxShared()
 
     --更新到ngx.shared.cache
     shared.set(dict,consulConfig.serviceListKey,serviceList)
-    ngx.log(ngx.INFO,"sysnc consul service to ngx.shared.cache")
+    -- ngx.log(ngx.INFO,"sysnc consul service to ngx.shared.cache")
 end
 
 ---从配置中拿服务配置数据并放到http header中
