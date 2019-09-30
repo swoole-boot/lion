@@ -11,7 +11,7 @@ local _M ={
 }
 
 --- table合并
--- @param ...
+--- @param ...
 --
 function _M.merge(...)
     local tabs = {...}
@@ -38,7 +38,7 @@ function _M.merge(...)
 end
 
 --- table洗牌
--- @param arrayList
+--- @param arrayList table
 --
 function _M.shuffle(arrayList)
     local length = #arrayList

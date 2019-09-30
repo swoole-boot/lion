@@ -1,23 +1,21 @@
--- 配置
+-- route
 -- Created by IntelliJ IDEA.
 -- User: jianghaiqiang
 -- Date: 2019/9/29
--- Time: 11:27
+-- Time: 10:37
 -- To change this template use File | Settings | File Templates.
 --
-local shared = require "lion.ext.shared"
 
+local context  = ngx.ctx
 
 local _M = {
     _VERSION = "1.0.0"
 }
 
---- 获取配置
---- @param key string
---
-function _M.get(key)
-    return shared.get(ngx.shared.config, key)
+function _M.route()
+    local content = require("cjson").encode(context.request)
+    ngx.say(content)
+    ngx.exit(200)
 end
 
 return _M
-

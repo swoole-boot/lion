@@ -13,10 +13,10 @@ local _M ={
 }
 
 --- 存储任意类型数据
--- @param share
--- @param key
--- @param value
--- @param timeout
+--- @param share
+--- @param key     string
+--- @param value   any
+--- @param timeout number
 --
 function _M.set(share, key, value, timeout)
     timeout = timeout or 0
@@ -27,8 +27,8 @@ function _M.set(share, key, value, timeout)
 end
 
 --- 批量存储
--- @param share
--- @param table
+--- @param share
+--- @param table   table
 --
 function _M.mset(share, table)
     local success,error,forcible = true, nil, nil
@@ -42,8 +42,8 @@ function _M.mset(share, table)
 end
 
 --- 获取值
--- @param share
--- @param key
+--- @param share
+--- @param key    string
 --
 function _M.get(share, key)
     local value, flags = share:get(key)

@@ -124,4 +124,16 @@ function _M.setServerName(name)
     ngx.header["Server"] = ext.emptyDefault(name,"lion-gateway")
 end
 
+---初始化context
+---
+function _M.initContext()
+    ngx.ctx.request          =  ngx.ctx.request  or {}
+    ngx.ctx.response         =  ngx.ctx.response or {}
+    ngx.ctx.request.method   = ngx.req.get_method()
+    ngx.ctx.request.version  = ngx.req.http_version()
+    ngx.ctx.request.headers  = ngx.req.get_headers()
+    ngx.ctx.request.uri      = ngx.var.uri
+    ngx.ctx.request.uriArgs  = ngx.req.get_uri_args()
+end
+
 return _M

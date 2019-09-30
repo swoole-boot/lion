@@ -36,6 +36,12 @@ end
 function _M.rewrite()
     lion.service2Header()
 
+    local enableApp = require("lion.ext.config").get("enableApp")
+    if enableApp then
+        require("lion.lion").initContext()
+        return require("lion.mc.route.route").route()
+    end
+
     require ("events.rewrite").run()
 end
 

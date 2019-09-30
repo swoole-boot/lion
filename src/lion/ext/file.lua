@@ -10,7 +10,7 @@ local _M ={
 }
 
 --- 读取整个文件
--- @param filename
+--- @param filename string
 --
 function _M.read(filename)
     local file = io.open(filename,'r')
