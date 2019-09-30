@@ -145,6 +145,18 @@ restart() {
   if [[ $? == 1 ]]
   then
     stop
+
+    while :
+    do
+      nginxLive
+      if [[ $? == 1 ]]
+      then
+        sleep 1
+      else
+          break
+      fi
+
+    done
   fi
 
   start
