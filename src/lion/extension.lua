@@ -9,8 +9,8 @@
 local _M = { _VERSION = '1.x' }
 
 --- 判断是否为空
--- @param value
---
+--- @param value any
+---
 function _M.empty(value)
     if type(value) == "table" then
         return next(value) == nil
@@ -18,17 +18,28 @@ function _M.empty(value)
     return value == nil or value == false or value =="" or value == ngx.null or value == "null"
 end
 
+--- 判断是否为空，如果为空给默认值
+---@param value        any
+---@param defaultValue any
+---
+function _M.emptyDefault(value,defaultValue)
+    if _M.empty(value) then
+        return defaultValue or nil
+    end
+    return value
+end
+
 --- 判断类型是否为table
--- @param value
---
+--- @param value any
+---
 function _M.isTable(value)
     return type(value) == "table"
 end
 
 --- 块赋值
--- @param table object
--- @param table config
---
+---@param object table
+---@param config table
+---
 function _M.block(object,config)
     for property,value in pairs(config) do
         object[ property ] = value

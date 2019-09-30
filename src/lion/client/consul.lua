@@ -13,18 +13,18 @@
     local client = consul:new(nil,consulConfig)
     local result = {}
     local time = ngx.time()
-    result.create           = client:kvCreateDir("lion")
-    result.set              = client:kvSet("lion/version","1.0.0")
-    result.set              = client:kvSet("lion/version/t"..time,time)
-    result.getValue         = client:kvGetValue("lion/version/t1569747432")
-    result.get              = client:kvGet("lion/version/t1569747432")
-    result.getAll           = client:kvGetAll("lion")
-    result.delete           = client:kvDelete("lion/version")
-    result.deleteDir        = client:kvDeleteDir("lion")
-    result.serviceList      = client:serviceList()
-    result.datacenterList   = client:dcList()
-    result.nodeList         = client:nodeList()
-    result.nodeListByName   = client:getNodeListByName("consul")
+    result.create                                       = client:kvCreateDir("lion")
+    result.set                                          = client:kvSet("lion/version","1.0.0")
+    result.set                                          = client:kvSet("lion/version/t"..time,time)
+    result.getValue, result.getValueStatus              = client:kvGetValue("lion/version/t1569747432")
+    result.get, result.getStatus                        = client:kvGet("lion/version/t1569747432")
+    result.getAll, result.getAllStatus                  = client:kvGetAll("lion")
+    result.delete                                       = client:kvDelete("lion/version")
+    result.deleteDir                                    = client:kvDeleteDir("lion")
+    result.serviceList, result.serviceListStatus        = client:serviceList()
+    result.datacenterList, result.datacenterStatus      = client:dcList()
+    result.nodeList, result.nodeListStatus              = client:nodeList()
+    result.nodeListByName, result.nodeListByNameStatus  = client:getNodeListByName("consul")
     -- 定义服务
     local service =  {
         ID= "40e4a748-2192-161a-0510-9bf59fe950b5",
@@ -133,14 +133,14 @@ end
 function _M:dcList()
     local status, body, headers = self:request("GET","/v1/catalog/datacenters")
     if status ~= 200 then
-        return {}
+        return nil, false
     end
-    return json.decode(body)
+    return json.decode(body), true
 end
 
 --- 注册服务
--- @param params
--- @example 
+--- @param params table
+--- @example
 --[[ 
     {
         ID= "40e4a748-2192-161a-0510-9bf59fe950b5",
@@ -205,8 +205,8 @@ function _M:register(params)
 end
 
 --- 服务注销
--- @param node
--- @param params
+--- @param node     string
+--- @param params   table
 --
 function _M:deregister(node, params)
     params = params or {}
@@ -220,7 +220,7 @@ function _M:deregister(node, params)
 end
 
 --- node列表
--- @param params
+--- @param params table
 --
 function _M:nodeList(params)
     params = params or {}
@@ -230,13 +230,13 @@ function _M:nodeList(params)
 
     local status, body, headers = self:request("GET","/v1/catalog/nodes",params)
     if status ~= 200 then
-        return {}
+        return nil, false
     end
-    return json.decode(body)
+    return json.decode(body), true
 end
 
 --- service列表
--- @param params
+--- @param params table
 --
 function _M:serviceList(params)
     params = params or {}
@@ -246,14 +246,14 @@ function _M:serviceList(params)
 
     local status, body, headers = self:request("GET","/v1/catalog/services",params)
     if status ~= 200 then
-        return {}
+        return nil, false
     end
-    return json.decode(body)
+    return json.decode(body), true
 end
 
 --- 根据服务名称获取节点列表
--- @param name
--- @param params
+--- @param name   string
+--- @param params table
 --
 function _M:getNodeListByName(name,params)
     params = params or {}
@@ -263,9 +263,9 @@ function _M:getNodeListByName(name,params)
 
     local status, body, headers = self:request("GET","/v1/catalog/service/"..name,params)
     if status ~= 200 then
-        return {}
+        return nil, false
     end
-    return json.decode(body)
+    return json.decode(body), true
 end
 
 --endregion
@@ -273,9 +273,9 @@ end
 
 --region #############################2.kv操作##################################
 ---
--- @param key
--- @param value
--- @param params
+--- @param key      string
+--- @param value    any
+--- @param params   table
 --
 function _M:kvSet(key, value, params)
     params = params or {}
@@ -288,7 +288,7 @@ function _M:kvSet(key, value, params)
 end
 
 --- 创建目录
--- @param dir
+--- @param dir  string
 --
 function _M:kvCreateDir(dir)
     if string.sub(dir,-1) ~= "/" then
@@ -299,9 +299,9 @@ function _M:kvCreateDir(dir)
 end
 
 ---
--- @param key
--- @param params
--- @param decrypt 是否自动解密
+--- @param key     string
+--- @param params  table
+--- @param decrypt boolean 是否自动解密
 --
 function _M:kvGet(key, params, decrypt)
     params = params or {}
@@ -310,9 +310,8 @@ function _M:kvGet(key, params, decrypt)
     },params)
 
     local status, body, headers = self:request("GET", "/v1/kv/"..key, params)
-    ngx.log(ngx.INFO,"key:",key,";status:",status,";body:",body)
     if status ~= 200 then
-        return false
+        return nil, false
     end
 
     local values = json.decode(body)
@@ -330,31 +329,41 @@ function _M:kvGet(key, params, decrypt)
         end
     end
 
-    return values
+    return values, true
 end
 
 ---
--- @param key
+--- @param key string
 --
 function _M:kvGetValue(key)
-    local values = self:kvGet(key)
-    if ext.empty(values) then
-        return nil
+    local values, status = self:kvGet(key)
+    -- 请求失败
+    if status == false then
+        return nil, false
     end
 
-    return values[1]["Value"]
+    if ext.empty(values) then
+        return values, true
+    end
+
+    return values[1]["Value"], true
 end
 
 --- 获取整个目录下所有值
--- @param dir
+--- @param dir string
 --
 function _M:kvGetAll(dir)
-    local values = self:kvGet(dir,{
+    local values, status = self:kvGet(dir,{
         recurse = 1
     })
 
+    -- 请求失败
+    if status == false then
+        return nil, false
+    end
+
     if ext.empty(values) then
-        return nil
+        return values, true
     end
 
     local kvList = {}
@@ -362,12 +371,12 @@ function _M:kvGetAll(dir)
         kvList[ value["Key"] ] = value["Value"]
     end
 
-    return kvList
+    return kvList, true
 end
 
 --- 删除key
--- @param key
--- @param params
+--- @param key        string
+--- @param params     table
 --
 function _M:kvDelete(key, params)
     params = params or {}
@@ -380,7 +389,7 @@ function _M:kvDelete(key, params)
 end
 
 --- 删除目录
--- @param dir
+--- @param dir string
 --
 function _M:kvDeleteDir(dir)
     return self:kvDelete(dir,{
