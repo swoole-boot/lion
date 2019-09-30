@@ -5,6 +5,8 @@
 -- Time: 18:34
 -- To change this template use File | Settings | File Templates.
 --
+local lion = require("lion.lion")
+
 local _M = {
     _VERSION = '1.x',
 }
@@ -12,33 +14,28 @@ local _M = {
 --- ########################从上到下为ngx_lua生命周期##############################
 
 --- init_by_lua*
--- @param string configFileName 配置文件物理路径
---
+--- @param configFileName string  配置文件物理路径
+---
 function _M.init(configFileName)
-    ---文件io驱动
-    local file   = require "lion.ext.file"
-    local json   = require "cjson"
-    local shared = require "lion.ext.shared"
-    local init   = require "events.init"
-
-    ---读取配置文件
-    local config = file.read(configFileName)
-    ---放入nginx cache
-    shared.mset(ngx.shared.config,json.decode(config))
+    lion.initConfig(configFileName)
 
     ---执行扩展
-    init.run()
+    require ("events.init").run()
 end
 
 --- init_worker_by_lua*
 --
 function _M.initWork()
+    lion.sysncConsul2NgxShared()
+
     require ("events.initwork").run()
 end
 
 --- rewrite_by_lua*
 --
 function _M.rewrite()
+    lion.service2Header()
+
     require ("events.rewrite").run()
 end
 
@@ -57,15 +54,13 @@ end
 --- content_by_lua*
 --
 function _M.content()
-    local content       = require "events.content"
-    return content.run()
+    require("events.content").run()
 end
 
 --- header_filter_by_lua*
 --
 function _M.headerFilter()
-    local shared = require "lion.ext.shared"
-    ngx.header["Server"] = shared.get(ngx.shared.config,"name")
+    lion.setServerName()
 
     require ("events.headerfilter").run()
 end

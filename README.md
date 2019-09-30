@@ -39,7 +39,7 @@ yum install pcre-devel openssl-devel gcc curl
   -- config             配置目录
      -- nginx.conf      nginx配置文件
      -- servers         虚拟主机目录
-     -- lion.json       lion应用配置文件，会在init_by_lua_file脚本添加nginx.shared.config中
+     -- lion.json       lion应用配置文件，会在init_by_lua_block事件添加nginx.shared.config中
   -- src                源码包目录
      -- lion            lion源码包目录
      -- app             mc目录,可以做mock，也可以做http(s)接口开发
