@@ -15,6 +15,5 @@ return {
     port        = 888 ,              -- 服务端口
     path        = "" ,               -- 服务路径
     protocal    = "" ,               -- 协议名称
-    handler     = "" ,               -- 协议处理类
     funcs       = {} ,               -- 协议方法列表
 }

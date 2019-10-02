@@ -37,7 +37,7 @@ function _M.consul(nodeList)
 
         item.address   = ext.emptyDefault(value.ServiceAddress,value.Address)
         item.protocal  = ext.emptyDefault(value.ServiceMeta.protocal,service.protocal)
-        item.handler   = ext.emptyDefault(value.ServiceMeta.handler,service.handler)
+        -- item.handler   = ext.emptyDefault(value.ServiceMeta.handler,service.handler)
         item.path      = ext.emptyDefault(value.ServiceMeta.path,service.path)
 
         value.ServiceMeta.path = nil
