@@ -40,11 +40,11 @@ function _M.consul(nodeList)
         item.path      = ext.emptyDefault(value.ServiceMeta.path, service.path)
 
         value.ServiceMeta.path = nil
-        value.ServiceMeta.protocal = nil
+        value.ServiceMeta.protocol = nil
         value.ServiceMeta.handler  = nil
 
         -- 如果协议存在
-        if not ext.empty(item.protocal) then
+        if not ext.empty(item.protocol) then
             item.funcs = value.ServiceMeta
         else
             item.funcs = service.funcs
