@@ -1,7 +1,7 @@
 {
     "name"         : "lion-gateway",
     "version"      : "1.0.0",
-    "enableApp"    : true ,
+    "enableApp"    : false ,
     "defaultRoute" : "index/index",
     "consul"  : {
         "node"           : "http://10.16.49.95:2500",

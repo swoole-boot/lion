@@ -112,6 +112,7 @@ function _M.service2Header()
     end
 
     local serviceList = dict:get(consulConfig.serviceListKey)
+
     -- 如果获取到服务配置，将服务配置放到header中，否则放入"{}"防止恶意注入
     ngx.req.set_header(consulConfig.serviceListKey, ext.emptyDefault(serviceList,"{}"))
 end
