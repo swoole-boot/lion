@@ -14,7 +14,6 @@ return {
     wan         = "" ,               -- wan地址，空字符串表示不支持
     port        = 888 ,              -- 服务端口
     path        = "" ,               -- 服务路径
-    protocal    = "" ,               -- 协议名称
-    handler     = "" ,               -- 协议处理类
+    protocol    = "" ,               -- 协议名称
     funcs       = {} ,               -- 协议方法列表
 }

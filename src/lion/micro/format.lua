@@ -22,7 +22,7 @@ function _M.consul(nodeList)
     local serviceList = {}
     local service = require("lion.micro.service")
 
-    for index,value in pairs(nodeList) do
+    for index, value in pairs(nodeList) do
         local item = {}
         item.dc        = value.Datacenter
         item.node      = value.Node
@@ -35,17 +35,16 @@ function _M.consul(nodeList)
             item.wan = service.wan
         end
 
-        item.address   = ext.emptyDefault(value.ServiceAddress,value.Address)
-        item.protocal  = ext.emptyDefault(value.ServiceMeta.protocal,service.protocal)
-        item.handler   = ext.emptyDefault(value.ServiceMeta.handler,service.handler)
-        item.path      = ext.emptyDefault(value.ServiceMeta.path,service.path)
+        item.address   = ext.emptyDefault(value.ServiceAddress, value.Address)
+        item.protocol  = ext.emptyDefault(value.ServiceMeta.protocol, service.protocol)
+        item.path      = ext.emptyDefault(value.ServiceMeta.path, service.path)
 
         value.ServiceMeta.path = nil
-        value.ServiceMeta.protocal = nil
+        value.ServiceMeta.protocol = nil
         value.ServiceMeta.handler  = nil
 
         -- 如果协议存在
-        if not ext.empty(item.protocal) then
+        if not ext.empty(item.protocol) then
             item.funcs = value.ServiceMeta
         else
             item.funcs = service.funcs
