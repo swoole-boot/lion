@@ -22,7 +22,7 @@ function _M.consul(nodeList)
     local serviceList = {}
     local service = require("lion.micro.service")
 
-    for index,value in pairs(nodeList) do
+    for index, value in pairs(nodeList) do
         local item = {}
         item.dc        = value.Datacenter
         item.node      = value.Node
