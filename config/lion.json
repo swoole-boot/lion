@@ -3,6 +3,8 @@
     "version"      : "1.0.0",
     "enableApp"    : true ,
     "defaultRoute" : "index/index",
+    "rules" : {
+    },
     "consul"  : {
         "node"           : "http://10.16.49.95:2500",
         "token"          : "7028e52c-9ed3-1c8c-b81d-c35575456b77",

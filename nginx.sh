@@ -112,7 +112,18 @@ stop() {
   fi
 
   echo -e "\033[33m stop the openresty service \033[0m"
-  RESULT=$($NGINX -s quit 2>&1)
+
+
+  getOs
+  if [[ $? == 0 ]]
+  then
+      #mac
+      RESULT=$($NGINX -s stop 2>&1)
+  else
+      #centos
+      RESULT=$($NGINX -s quit 2>&1)
+  fi
+
   if [[ $RESULT =~ "[error]" ]]
   then
     echo -e "\033[31m ${RESULT} \033[0m"
