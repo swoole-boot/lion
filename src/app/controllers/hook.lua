@@ -1,4 +1,4 @@
--- IndexController
+-- HookController
 -- Created by IntelliJ IDEA.
 -- User: jianghaiqiang
 -- Date: 2019/9/29
@@ -9,7 +9,7 @@ local ext        = require "lion.extension"
 
 local _M = {
     _VERSION = "1.0.0",
-    id       = "index",
+    id       = "hook",
     actionId = ""
 }
 
@@ -25,10 +25,23 @@ function _M:new(controller,config)
     return controller
 end
 
---- indexAction
---
+--- 自定义action执行前,可以不定义
+---@param result     any
+---
+function _M:actionBefore()
+    ngx.ctx.response.headers.route = self.id,"/",self.actionId
+    return true
+end
+
 function _M:indexAction()
-    return "Hello World!"
+    return "Hello Hook"
+end
+
+--- 自定义action执行后,可以不定义
+---@param result     any
+---
+function _M:actionAfter(result)
+    return {result}
 end
 
 return _M

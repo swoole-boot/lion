@@ -16,13 +16,16 @@ local _M = {
 }
 
 ----初始化配置
----@param configFileName string 配置文件物理路径
+---@param srcPath string 项目物理路径
 ---
-function _M.initConfig(configFileName)
+function _M.initConfig(srcPath)
+    --- 设置项目根路径
+    shared.set(ngx.shared.config,"srcPath",srcPath)
+
     ---文件io驱动
     local file   = require "lion.ext.file"
     ---读取配置文件
-    local configData = file.read(configFileName)
+    local configData = file.read(srcPath.."/config/lion.json")
     ---放入nginx cache
     shared.mset(ngx.shared.config,json.decode(configData))
 end
@@ -129,12 +132,39 @@ end
 ---
 function _M.initContext()
     ngx.ctx.request          =  ngx.ctx.request  or {}
-    ngx.ctx.response         =  ngx.ctx.response or {}
-    ngx.ctx.request.method   = ngx.req.get_method()
-    ngx.ctx.request.version  = ngx.req.http_version()
-    ngx.ctx.request.headers  = ngx.req.get_headers()
-    ngx.ctx.request.uri      = ngx.var.uri
-    ngx.ctx.request.uriArgs  = ngx.req.get_uri_args()
+    ngx.ctx.request.method   =  ngx.req.get_method()
+    ngx.ctx.request.version  =  ngx.req.http_version()
+    ngx.ctx.request.headers  =  ngx.req.get_headers()
+    ngx.ctx.request.uri      =  ngx.var.uri
+    ngx.ctx.request.uriArgs  =  ngx.req.get_uri_args()
+
+    ngx.ctx.response         =  ngx.ctx.response or {
+        headers = {},
+        body    = "",
+        status  = ngx.HTTP_OK
+    }
+end
+
+---调度
+---
+function _M.dispatcher()
+    local controllerName, actionId = string.match(ngx.ctx.request.route,"(%w+)/(%w+)")
+    controllerName = string.lower(controllerName)
+    actionId = string.lower(actionId)
+
+    local controllerFileName = shared.get(ngx.shared.config,"srcPath").."/src/app/controllers/"..controllerName..".lua"
+    --- 判断controller是否存在
+    if not require("lion.ext.file").fileExists(controllerFileName) then
+        return
+    end
+
+    --- 实例化控制器
+    local controller = require("app.controllers."..controllerName):new(nil,{
+        id       = controllerName ,
+        actionId = actionId
+    })
+
+    return require("lion.mc.controller").run(controller)
 end
 
 return _M

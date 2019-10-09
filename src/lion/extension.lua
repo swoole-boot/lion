@@ -47,5 +47,17 @@ function _M.block(object,config)
     return object
 end
 
+---
+---@param str string 字符串
+---@param sep string 分隔符
+---
+function _M.split(str, sep)
+    local rtlist= {}
+    string.gsub(str, '[^'.. sep ..']+', function(w)
+        table.insert(rtlist, w)
+    end)
+    return rtlist
+end
+
 return _M
 

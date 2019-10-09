@@ -14,10 +14,10 @@ local _M = {
 --- ########################从上到下为ngx_lua生命周期##############################
 
 --- init_by_lua*
---- @param configFileName string  配置文件物理路径
+--- @param srcPath string  项目物理路径
 ---
-function _M.init(configFileName)
-    lion.initConfig(configFileName)
+function _M.init(srcPath)
+    lion.initConfig(srcPath)
 
     ---执行扩展
     require ("events.init").run()
@@ -39,7 +39,8 @@ function _M.rewrite()
     local enableApp = require("lion.ext.config").get("enableApp")
     if enableApp then
         require("lion.lion").initContext()
-        return require("lion.mc.route.route").route()
+        ngx.ctx.request.route = require("lion.mc.route.route").route()
+        lion.dispatcher()
     end
 
     require ("events.rewrite").run()

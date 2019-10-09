@@ -11,13 +11,24 @@ local _M ={
 
 --- 读取整个文件
 --- @param filename string
---
+---
 function _M.read(filename)
     local file = io.open(filename,'r')
     if file then
         return file:read('a')
     end
     return ''
+end
+
+--- 判断文件是否存在
+---@param filename string
+---
+function _M.fileExists(filename)
+    local file = io.open(filename, "rb")
+    if file then
+        file:close()
+    end
+    return file ~= nil
 end
 
 return _M

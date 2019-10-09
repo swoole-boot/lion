@@ -1,0 +1,151 @@
+2019/10/09 09:00:01 [error] 12409#12409: *34 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/lion.lua:177: attempt to call method 'actionBefore' (a nil value)
+stack traceback:
+coroutine 0:
+	/data/swoole-boot/lion/src/lion/lion.lua: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:19:41 [error] 12414#12414: *224 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:58: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:58: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:38: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:19:42 [error] 12408#12408: *230 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:58: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:58: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:38: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:19:42 [error] 12416#12416: *232 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:58: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:58: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:38: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:19:42 [error] 12408#12408: *234 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:58: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:58: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:38: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:22:18 [error] 12407#12407: *272 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:58: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:58: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:38: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:23:44 [error] 12417#12417: *273 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:59: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:59: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:39: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:23:45 [error] 12415#12415: *297 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:59: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:59: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:39: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:23:45 [error] 12420#12420: *299 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:59: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:59: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:39: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:24:55 [error] 12416#12416: *321 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:28: attempt to call global 'action' (a nil value)
+stack traceback:
+coroutine 0:
+	/data/swoole-boot/lion/src/lion/mc/controller.lua: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:26:12 [error] 12418#12418: *324 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:51: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:51: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:31: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:26:12 [error] 12419#12419: *325 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:51: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:51: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:31: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:26:12 [error] 12411#12411: *327 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:51: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:51: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:31: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:26:13 [error] 12410#12410: *329 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:51: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:51: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:31: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:28:05 [error] 12409#12409: *350 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/mc/controller.lua:59: Cannot serialise function: type not supported
+stack traceback:
+coroutine 0:
+	[C]: in function 'encode'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:59: in function 'actionAfter'
+	/data/swoole-boot/lion/src/lion/mc/controller.lua:39: in function 'dispatcher'
+	/data/swoole-boot/lion/src/lion/application.lua:43: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:39:48 [error] 12416#12416: *502 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:41:19 [error] 12416#12416: *521 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:41:25 [error] 12416#12416: *521 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /index/test HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:41:28 [error] 12416#12416: *521 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /index/test HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:41:28 [error] 12416#12416: *521 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /index/test HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:41:29 [error] 12416#12416: *521 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /index/test HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:41:29 [error] 12416#12416: *521 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /index/test HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:44:35 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:44:40 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:44:44 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:38 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:38 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:38 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:38 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:39 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:39 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:39 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:39 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:39 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:39 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:40 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:40 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:40 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:40 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:40 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:41 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:41 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:41 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:41 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:42 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:42 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:42 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:42 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:43 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/09 09:45:43 [error] 12416#12416: *563 attempt to set ngx.status after sending out response headers, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /hook/index/asdfa HTTP/1.1", host: "web.elephant.com:7080"
