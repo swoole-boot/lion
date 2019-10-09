@@ -19,5 +19,13 @@ function _M.get(key)
     return shared.get(ngx.shared.config, key)
 end
 
+--- 变更配置
+---@param key   string
+---@param value any
+---
+function _M.set(key,value)
+    return shared.get(ngx.shared.config, key, value)
+end
+
 return _M
 
