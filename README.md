@@ -1,39 +1,5 @@
 # lion网关
 
-# 压力测试
-
-* 1.调用端配置
-
-|工具|操作系统|CPU|内存|
-|:--|:--|:--|:--|
-|jmeter|Windows 10专业版|Intel(R) Core(TM) i7-8700 CPU @ 3.2GHz|16.0 GB|
-
-* 2.lion服务端配置
-
-|openresty版本|操作系统|CPU|内存|
-|:------------|:------|:--|:---|
-|1.15.8.2|CentOS Linux release 7.2.1511 (Core)|Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz 4核|8.0 GB|
-
-* 3.参数
-
-![线程配置](https://github.com/swoole-boot/lion/blob/master/img/jmeter.png?raw=true)
-
-![地址](https://github.com/swoole-boot/lion/blob/master/img/jmeter-url.png?raw=true)
-
-* 4.测试结果
-
-lion服务端cpu占用情况：
-
-![lion服务端cpu占用情况](https://github.com/swoole-boot/lion/blob/master/img/htop.png?raw=true)
-
-响应时间曲线：
-
-![rt](https://github.com/swoole-boot/lion/blob/master/img/rt.png?raw=true)
-
-结果汇总：
-
-![汇总](https://github.com/swoole-boot/lion/blob/master/img/census.png?raw=true)
-
 # 1.服务基础架构设计
 
 ![架构图](https://github.com/swoole-boot/swoole-boot/blob/master/swoole-boot-micro-server.png?raw=true)
@@ -93,6 +59,47 @@ yum install pcre-devel openssl-devel gcc curl
 /yourpath/lion/nginx.sh restart
 ```
 
-## 5.nginx-lua生命周期
+## 5.压力测试
+
+### 5.1 调用端配置
+
+|工具|操作系统|CPU|内存|
+|:--|:--|:--|:--|
+|jmeter|Windows 10专业版|Intel(R) Core(TM) i7-8700 CPU @ 3.2GHz|16.0 GB|
+
+### 5.2 lion服务端配置
+
+|openresty版本|操作系统|CPU|内存|
+|:------------|:------|:--|:---|
+|1.15.8.2|CentOS Linux release 7.2.1511 (Core)|Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz 4核|8.0 GB|
+
+### 5.3 参数
+
+![线程配置](https://github.com/swoole-boot/lion/blob/master/img/jmeter.png?raw=true)
+
+![地址](https://github.com/swoole-boot/lion/blob/master/img/jmeter-url.png?raw=true)
+
+## 5.4 测试结果
+
+* lion服务端cpu占用情况：
+
+![lion服务端cpu占用情况](https://github.com/swoole-boot/lion/blob/master/img/htop.png?raw=true)
+
+* 响应时间曲线：
+
+![rt](https://github.com/swoole-boot/lion/blob/master/img/rt.png?raw=true)
+
+* 结果汇总：
+
+![汇总](https://github.com/swoole-boot/lion/blob/master/img/census.png?raw=true)
+
+### 5.5 结果分析
+
+* 1.测试过程中，lion服务器还有其他docker容器和服务，真实的吞吐量应该比测试结果还要高一些
+* 2.通过响应时间曲线可以看到平均响应时间远不到1毫秒
+* 3.测试过程，CPU占用51.55%
+* 4.总样本数量为828592，100%成功，吞吐量在1.33万/秒左右
+
+## 6.nginx-lua生命周期
 
 ![image](https://github.com/swoole-boot/lion/blob/master/life.png?raw=true)
