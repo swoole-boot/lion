@@ -7,7 +7,6 @@
 --
 local ext      = require("lion.extension")
 local config   = require("lion.ext.config")
-local context  = ngx.ctx
 
 local _M = {
     _VERSION = "1.0.0"
@@ -64,7 +63,7 @@ function _M.matchRules()
 
     if ext.isTable(rules) then
         for _,rule in pairs(rules) do
-            local matches = { string.match(context.request.uri,rule.pattern) }
+            local matches = { string.match(ngx.ctx.request.uri,rule.pattern) }
             --- 匹配到路由
             if not ext.empty(matches) then
                 for index,value in pairs(matches) do
@@ -92,9 +91,9 @@ function _M.route()
     end
 
     --- 通用匹配
-    local controller,action = string.match(context.request.uri,"/(%w+)/(%w+)")
+    local controller,action = string.match(ngx.ctx.request.uri,"/(%w+)/(%w+)")
     if ext.empty(controller) then
-        controller = string.match(context.request.uri,"/(%w+)")
+        controller = string.match(ngx.ctx.request.uri,"/(%w+)")
 
         if ext.empty(controller) then
             return config.get("defaultRoute")
