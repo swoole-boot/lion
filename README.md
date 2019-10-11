@@ -1,6 +1,6 @@
 # lion网关
 
-#压力测试
+# 压力测试
 
 * 1.调用端配置
 
@@ -16,23 +16,23 @@
 
 * 3.参数
 
-![线程配置](https://github.com/swoole-boot/swoole-boot/blob/master/img/jmeter.png?raw=true)
+![线程配置](https://github.com/swoole-boot/lion/blob/master/img/jmeter.png?raw=true)
 
-![地址](https://github.com/swoole-boot/swoole-boot/blob/master/img/jmeter-url.png?raw=true)
+![地址](https://github.com/swoole-boot/lion/blob/master/img/jmeter-url.png?raw=true)
 
 * 4.测试结果
 
 lion服务端cpu占用情况：
 
-![lion服务端cpu占用情况](https://github.com/swoole-boot/swoole-boot/blob/master/img/htop.png?raw=true)
+![lion服务端cpu占用情况](https://github.com/swoole-boot/lion/blob/master/img/htop.png?raw=true)
 
 响应时间曲线：
 
-![rt](https://github.com/swoole-boot/swoole-boot/blob/master/img/rt.png?raw=true)
+![rt](https://github.com/swoole-boot/lion/blob/master/img/rt.png?raw=true)
 
 结果汇总：
 
-![汇总](https://github.com/swoole-boot/swoole-boot/blob/master/img/census.png?raw=true)
+![汇总](https://github.com/swoole-boot/lion/blob/master/img/census.png?raw=true)
 
 # 1.服务基础架构设计
 
