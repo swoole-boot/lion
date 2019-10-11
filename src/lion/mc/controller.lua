@@ -7,7 +7,6 @@
 --
 local response  = require "lion.ext.response"
 local ext       = require "lion.extension"
-local context   = ngx.ctx
 
 local _M = {
     _VERSION = "1.0.0",
@@ -71,9 +70,9 @@ end
 ---
 function _M.actionAfter(result,controller)
     if ext.isTable(result) then
-        context.response.body = require("cjson").encode(result)
+        ngx.ctx.response.body = require("cjson").encode(result)
     else
-        context.response.body = tostring(result)
+        ngx.ctx.response.body = tostring(result)
     end
 end
 

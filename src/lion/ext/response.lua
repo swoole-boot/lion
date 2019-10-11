@@ -55,10 +55,19 @@ function _M.send()
         end
     end
 
+    ---如果回源,状态码是ngx.HTTP_OK
+    if ngx.ctx.response.returnSource and ngx.ctx.response.status == ngx.HTTP_OK then
+        return
+    end
+
     ngx.status = ngx.ctx.response.status
+
     if ngx.ctx.response.body ~= nil and ngx.ctx.response.body ~= "" then
         ngx.say(ngx.ctx.response.body)
     end
+
+    --- 通知客户端关闭
+    ngx.eof()
     ngx.exit(ngx.ctx.response.status)
 end
 

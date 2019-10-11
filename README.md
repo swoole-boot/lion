@@ -1,7 +1,38 @@
-# lion
-lion
+# lion网关
 
-# 网关
+#压力测试
+
+* 1.调用端配置
+
+|工具|操作系统|CPU|内存|
+|:--|:--|:--|:--|
+|jmeter|Windows 10专业版|Intel(R) Core(TM) i7-8700 CPU @ 3.2GHz|16.0 GB|
+
+* 2.lion服务端配置
+
+|openresty版本|操作系统|CPU|内存|
+|:------------|:------|:--|:---|
+|1.15.8.2|CentOS Linux release 7.2.1511 (Core)|Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz 4核|8.0 GB|
+
+* 3.参数
+
+![线程配置](https://github.com/swoole-boot/swoole-boot/blob/master/img/jmeter.png?raw=true)
+
+![地址](https://github.com/swoole-boot/swoole-boot/blob/master/img/jmeter-url.png?raw=true)
+
+* 4.测试结果
+
+lion服务端cpu占用情况：
+
+![lion服务端cpu占用情况](https://github.com/swoole-boot/swoole-boot/blob/master/img/htop.png?raw=true)
+
+响应时间曲线：
+
+![rt](https://github.com/swoole-boot/swoole-boot/blob/master/img/rt.png?raw=true)
+
+结果汇总：
+
+![汇总](https://github.com/swoole-boot/swoole-boot/blob/master/img/census.png?raw=true)
 
 # 1.服务基础架构设计
 

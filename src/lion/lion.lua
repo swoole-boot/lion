@@ -139,6 +139,8 @@ function _M.initContext()
     ngx.ctx.request.uriArgs  =  ngx.req.get_uri_args()
 
     ngx.ctx.response         =  ngx.ctx.response or {
+        -- 是否回源，默认为false
+        returnSource = false,
         headers = {},
         body    = "",
         status  = ngx.HTTP_OK

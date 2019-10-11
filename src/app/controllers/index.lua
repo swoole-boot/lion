@@ -28,7 +28,7 @@ end
 --- indexAction
 --
 function _M:indexAction()
-    return "Hello World!"
+    return "Hello World"
 end
 
 return _M
