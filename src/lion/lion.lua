@@ -57,6 +57,7 @@ function _M.sysncConsul2NgxShared()
         --获得锁
         if isLock ~= nil then
             _M.syncServiceFromConsul2NgxShared()
+            _M.syncConfigFromConsul2NgxShared()
         end
 
         return
@@ -75,12 +76,15 @@ function _M.sysncConsul2NgxShared()
     end
 end
 
----同步服务到ngx.shared.cache
+--- consul注册的服务同步服务到ngx.shared.cache
 ---
 function _M.syncServiceFromConsul2NgxShared()
     local format = require "lion.micro.format"
     local consul = require "lion.client.consul"
     local consulConfig = config.get('consul')
+    if ext.empty(consulConfig) then
+        return
+    end
 
     local client = consul:new(nil,consulConfig)
     --拿服务列表
@@ -104,6 +108,30 @@ function _M.syncServiceFromConsul2NgxShared()
     --更新到ngx.shared.cache
     shared.set(dict,consulConfig.serviceListKey,serviceList)
     -- ngx.log(ngx.INFO,"sysnc consul service to ngx.shared.cache")
+end
+
+--- consul配置同步到ngx.shared
+function _M.syncConfigFromConsul2NgxShared()
+    local configKey = config.configRootKey()
+
+    local consul = require "lion.client.consul"
+    local consulConfig = config.get("consul")
+    if ext.empty(consulConfig) then
+        return
+    end
+
+    local client = consul:new(nil,consulConfig)
+    local configList, result = client:kvGetAll(configKey)
+    if not result or ext.empty(configList) then
+        client:kvCreateDir(configKey)
+        return
+    end
+
+    for key,value in pairs(configList) do
+        if value ~= "null" and value ~= nil then
+            config.set(key,value)
+        end
+    end
 end
 
 ---从配置中拿服务配置数据并放到http header中
@@ -150,6 +178,9 @@ end
 ---调度
 ---
 function _M.dispatcher()
+    --- 获取路由
+    ngx.ctx.request.route = require("lion.mc.route.route").route()
+
     local controllerName, actionId = string.match(ngx.ctx.request.route,"(%w+)/(%w+)")
     controllerName = string.lower(controllerName)
     actionId = string.lower(actionId)

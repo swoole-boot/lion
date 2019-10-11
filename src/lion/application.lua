@@ -39,7 +39,6 @@ function _M.rewrite()
     local enableApp = require("lion.ext.config").get("enableApp")
     if enableApp then
         require("lion.lion").initContext()
-        ngx.ctx.request.route = require("lion.mc.route.route").route()
         lion.dispatcher()
     end
 

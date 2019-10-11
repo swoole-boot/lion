@@ -12,7 +12,7 @@
         "token"          : "7028e52c-9ed3-1c8c-b81d-c35575456b77",
         "datacenter"     : "develop",
         "serviceListKey" : "cockService",
-        "delay"          : 100
+        "delay"          : 3
     }
 }
 

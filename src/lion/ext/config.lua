@@ -12,6 +12,12 @@ local _M = {
     _VERSION = "1.0.0"
 }
 
+--- 获取远程配置文件根key
+function _M.configRootKey()
+    local configKey = _M.get("configRootKey")
+    return ext.emptyDefault(configKey,"lion-gateway")
+end
+
 --- 获取配置
 --- @param key string
 --
@@ -24,7 +30,7 @@ end
 ---@param value any
 ---
 function _M.set(key,value)
-    return shared.get(ngx.shared.config, key, value)
+    return shared.set(ngx.shared.config, key, value)
 end
 
 return _M
