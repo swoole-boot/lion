@@ -6,7 +6,9 @@
 -- To change this template use File | Settings | File Templates.
 --
 
-local _M = { _VERSION = '1.x' }
+local _M = {
+    _VERSION = '1.0.0'
+}
 
 --- 判断是否为空
 --- @param value any

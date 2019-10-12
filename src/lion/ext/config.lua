@@ -6,7 +6,8 @@
 -- To change this template use File | Settings | File Templates.
 --
 local shared = require "lion.ext.shared"
-
+local ext    = require "lion.extension"
+local cjson  = require "cjson"
 
 local _M = {
     _VERSION = "1.0.0"
@@ -16,6 +17,17 @@ local _M = {
 function _M.configRootKey()
     local configKey = _M.get("configRootKey")
     return ext.emptyDefault(configKey,"lion-gateway")
+end
+
+---获取限速配置
+---
+function _M.rateLimitConfig()
+    local limitKey = _M.configRootKey().."/rate-limit"
+    local config = _M.get(limitKey)
+    if ext.empty(config) then
+        return {}
+    end
+    return cjson.decode(config)
 end
 
 --- 获取配置

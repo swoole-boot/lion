@@ -1,0 +1,112 @@
+2019/10/12 08:22:19 [error] 5881#5881: *152 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/limit/traffic.lua:21: attempt to index field 'driver' (a nil value)
+stack traceback:
+coroutine 0:
+	/data/swoole-boot/lion/src/lion/limit/traffic.lua: in function 'driver'
+	/data/swoole-boot/lion/src/lion/limit/traffic.lua:27: in function 'access'
+	/data/swoole-boot/lion/src/lion/application.lua:38: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:22:19 [error] 5881#5881: *153 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/limit/traffic.lua:21: attempt to index field 'driver' (a nil value)
+stack traceback:
+coroutine 0:
+	/data/swoole-boot/lion/src/lion/limit/traffic.lua: in function 'driver'
+	/data/swoole-boot/lion/src/lion/limit/traffic.lua:27: in function 'access'
+	/data/swoole-boot/lion/src/lion/application.lua:38: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:24:46 [info] 5881#5881: *987 [lua] traffic.lua:20: driver(): "{\n  \"driver\":{\n  \t\"class\":\"\",\n    \"ip\":\"\",\n    \"port\":\"\",\n    \"auth\":\"\",\n    \"db\":\"0\"\n  },\n  \"rules\":[\n  \t{\"path\":\"\/\",\"type\":\"var\",\"key\":\"ip\",\"zone\":\"60\",\"limit\":\"100\",\"error_result\":\"{\\\"code\\\":\\\"200\\\",\\\"data\\\":\\\"\\\",\\\"msg\\\":\\\"晚点再来\\\"}\",\"error_status\":\"200\"},\n  \t{\"path\":\"product\/45.html\",\"type\":\"var\",\"key\":\"ip\",\"zone\":\"60\",\"limit\":\"100\",\"error_result\":\"\",\"error_status\":\"403\"}\n  ]\n}", client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:24:46 [error] 5881#5881: *987 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/limit/traffic.lua:22: attempt to index field 'driver' (a nil value)
+stack traceback:
+coroutine 0:
+	/data/swoole-boot/lion/src/lion/limit/traffic.lua: in function 'driver'
+	/data/swoole-boot/lion/src/lion/limit/traffic.lua:28: in function 'access'
+	/data/swoole-boot/lion/src/lion/application.lua:38: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:24:46 [info] 5881#5881: *988 [lua] traffic.lua:20: driver(): "{\n  \"driver\":{\n  \t\"class\":\"\",\n    \"ip\":\"\",\n    \"port\":\"\",\n    \"auth\":\"\",\n    \"db\":\"0\"\n  },\n  \"rules\":[\n  \t{\"path\":\"\/\",\"type\":\"var\",\"key\":\"ip\",\"zone\":\"60\",\"limit\":\"100\",\"error_result\":\"{\\\"code\\\":\\\"200\\\",\\\"data\\\":\\\"\\\",\\\"msg\\\":\\\"晚点再来\\\"}\",\"error_status\":\"200\"},\n  \t{\"path\":\"product\/45.html\",\"type\":\"var\",\"key\":\"ip\",\"zone\":\"60\",\"limit\":\"100\",\"error_result\":\"\",\"error_status\":\"403\"}\n  ]\n}", client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:24:46 [error] 5881#5881: *988 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/limit/traffic.lua:22: attempt to index field 'driver' (a nil value)
+stack traceback:
+coroutine 0:
+	/data/swoole-boot/lion/src/lion/limit/traffic.lua: in function 'driver'
+	/data/swoole-boot/lion/src/lion/limit/traffic.lua:28: in function 'access'
+	/data/swoole-boot/lion/src/lion/application.lua:38: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:46 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:47 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:48 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:48 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:48 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:48 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:48 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:48 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:48 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:48 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:49 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:26:50 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:26:50 [info] 5870#5870: *1675 [lua] traffic.lua:20: driver(): string, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:29:15 [info] 5877#5877: *2529 [lua] traffic.lua:20: driver(): table, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:29:15 [info] 5877#5877: *2529 [lua] traffic.lua:20: driver(): table, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:29:17 [info] 5877#5877: *2529 [lua] traffic.lua:20: driver(): table, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:29:17 [info] 5877#5877: *2529 [lua] traffic.lua:20: driver(): table, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:29:18 [info] 5877#5877: *2529 [lua] traffic.lua:20: driver(): table, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:29:18 [info] 5877#5877: *2529 [lua] traffic.lua:20: driver(): table, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:31:58 [error] 5877#5877: *3458 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/limit/redis.lua:48: attempt to index a nil value
+stack traceback:
+coroutine 0:
+	/data/swoole-boot/lion/src/lion/limit/redis.lua: in function 'token'
+	/data/swoole-boot/lion/src/lion/limit/traffic.lua:32: in function 'access'
+	/data/swoole-boot/lion/src/lion/application.lua:38: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:31:58 [error] 5877#5877: *3459 lua entry thread aborted: runtime error: /data/swoole-boot/lion/src/lion/limit/redis.lua:48: attempt to index a nil value
+stack traceback:
+coroutine 0:
+	/data/swoole-boot/lion/src/lion/limit/redis.lua: in function 'token'
+	/data/swoole-boot/lion/src/lion/limit/traffic.lua:32: in function 'access'
+	/data/swoole-boot/lion/src/lion/application.lua:38: in function 'rewrite'
+	rewrite_by_lua(www.lion.com.conf:15):2: in main chunk, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:34:44 [error] 5877#5877: *4420 [lua] redis.lua:43: redis(): failed to connect: failed to parse host name "": no host, client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:34:44 [error] 5877#5877: *4420 [lua] redis.lua:43: redis(): failed to connect: failed to parse host name "": no host, client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:36:23 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:36:23 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:36:26 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:36:26 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:36:26 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:36:26 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:36:26 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:36:26 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:36:26 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:36:26 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:36:27 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:36:27 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): ["OK"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:02 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:02 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:02 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:02 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:03 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:04 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:04 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:04 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:04 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:04 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:04 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"
+2019/10/12 08:37:04 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET / HTTP/1.1", host: "web.elephant.com:7080"
+2019/10/12 08:37:04 [info] 5881#5881: *4990 [lua] redis.lua:49: redis(): [false,"ERR invalid password"], client: 10.18.72.96, server: www.lion.com.conf, request: "GET /favicon.ico HTTP/1.1", host: "web.elephant.com:7080", referrer: "http://web.elephant.com:7080/"

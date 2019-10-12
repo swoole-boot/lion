@@ -8,7 +8,7 @@
 local lion = require("lion.lion")
 
 local _M = {
-    _VERSION = '1.x',
+    _VERSION = '1.0.0',
 }
 
 --- ########################从上到下为ngx_lua生命周期##############################
@@ -35,6 +35,7 @@ end
 --
 function _M.rewrite()
     lion.service2Header()
+    require("lion.limit.traffic").access()
 
     local enableApp = require("lion.ext.config").get("enableApp")
     if enableApp then
