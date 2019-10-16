@@ -61,5 +61,39 @@ function _M.split(str, sep)
     return rtlist
 end
 
+---创建随机数
+---@param len  number
+---@param seed string
+---
+function _M.createRandStr(len, seed)
+    len    = len    or 5
+    seed = seed or "123456789abcdef"
+
+    local str = ""
+    local index = 1
+    local now = ngx.now() * 1000
+    for i = len, 1, -1 do
+        math.randomseed(now + i)
+        index = math.random(1,#seed)
+        str = str..string.sub(seed, index ,index)
+    end
+    return str;
+end
+
+---创建一个指定长度的唯一id,长度最小为 14+ #prefix
+---@param prefix string
+---@param length number
+---
+function _M.uniqueId(prefix, length)
+    length = length or 32
+    prefix = prefix or ""
+    local randLength = length - 13 - #prefix
+    if randLength < 1 then
+        randLength = 1
+    end
+
+    return prefix..tostring(ngx.now() * 1000).._M.createRandStr(randLength)
+end
+
 return _M
 
