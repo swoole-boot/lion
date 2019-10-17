@@ -10,27 +10,24 @@ local ext    = require "lion.extension"
 ---获取token的redis lua脚本
 ---
 local tokenScript = [[
-        local key      = ARGV[1]
-        local limit    = ARGV[2]
-        local uniqueId = ARGV[3]
-        local zone     = ARGV[4]
-        local time     = ARGV[5]
+        local key         = ARGV[1]
+        local limit       = ARGV[2]
+        local microTimeId = ARGV[3]
+        local zone        = ARGV[4]
 
-        zone = zone or 60
-        time = time or os.time()
-
-        limit = tonumber(limit)
-        time  = tonumber(time)
+        zone        = zone or 60
+        limit       = tonumber(limit)
+        local time  = tonumber(string.sub(microTimeId, 1, 10))
 
         local length = redis.call("LLEN", key)
-        if tonumber(length) < limit then
-            length = redis.call("LPUSH", key, uniqueId)
+        if length < limit then
+            length = redis.call("LPUSH", key, microTimeId)
             return 1
         else
-            local firtToken         = redis.call("LINDEX", key, limit - 1)
-            local firtTokenTimespan = time - tonumber(string.sub(firtToken, 1, 10))
-            if firtTokenTimespan >= tonumber(zone) then
-                redis.call("LPUSH", key, uniqueId)
+            local endId         = redis.call("LINDEX", key, limit - 1)
+            local timespan = time - tonumber(string.sub(endId, 1, 10))
+            if timespan >= tonumber(zone) then
+                redis.call("LPUSH", key, microTimeId)
                 redis.call("RPOP", key)
                 return 1
             else
@@ -84,7 +81,7 @@ function _M:token(key, limit, zone)
     end
     limit = limit or 10
     zone  = zone  or 10
-    local result = _M:redis():evalSha(hash,0, key, limit, ext.uniqueId("",20), zone, ngx.time())
+    local result = _M:redis():evalSha(hash, 0, key, limit, ext.uniqueId("",20), zone)
     return result == 1
 end
 
