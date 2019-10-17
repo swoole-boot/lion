@@ -29,7 +29,7 @@ function _M.access()
         return
     end
 
-    driver:token(ngx.var.remote_addr)
+    driver:token(ngx.var.remote_addr, 2)
 end
 
 return _M
