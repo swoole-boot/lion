@@ -1,2 +1,4 @@
-2019/10/11 08:26:47 [alert] 5066#5066: lua_code_cache is off; this will hurt performance in /data/swoole-boot/lion/config/lion.conf:24
-2019/10/11 08:26:48 [alert] 5102#5102: lua_code_cache is off; this will hurt performance in /data/swoole-boot/lion/config/lion.conf:24
+2019/10/16 03:22:38 [alert] 5951#5951: lua_code_cache is off; this will hurt performance in /data/swoole-boot/lion/config/lion.conf:24
+2019/10/16 03:22:39 [alert] 5987#5987: lua_code_cache is off; this will hurt performance in /data/swoole-boot/lion/config/lion.conf:24
+2019/10/16 06:05:55 [alert] 6011#6011: lua_code_cache is off; this will hurt performance in /data/swoole-boot/lion/config/lion.conf:24
+2019/10/16 06:05:56 [alert] 6047#6047: lua_code_cache is off; this will hurt performance in /data/swoole-boot/lion/config/lion.conf:24
