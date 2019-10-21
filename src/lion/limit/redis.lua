@@ -102,8 +102,11 @@ function _M:token(key, limit, zone)
 
     local uniqueId = ext.uniqueId("",20)
     local result,error = _M:redis():evalSha(hash, 0, key, limit, uniqueId, zone)
-    if result == false then
+    if error then
         ngx.log(ngx.ERR,"get token error:",error)
+    end
+
+    if result == 0 then
         return false
     end
 
