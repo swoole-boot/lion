@@ -48,6 +48,8 @@ local _M = {
     _VERSION = '1.0.0'
 }
 
+---
+---
 function _M.send()
     if not ext.empty(ngx.ctx.response.headers) then
         for key,value in pairs(ngx.ctx.response.headers) do
@@ -60,7 +62,7 @@ function _M.send()
         return
     end
 
-    ngx.status = ngx.ctx.response.status
+    ngx.status = tonumber(ngx.ctx.response.status)
 
     if ngx.ctx.response.body ~= nil and ngx.ctx.response.body ~= "" then
         ngx.say(ngx.ctx.response.body)
@@ -69,6 +71,26 @@ function _M.send()
     --- 通知客户端关闭
     ngx.eof()
     ngx.exit(ngx.ctx.response.status)
+end
+
+---response
+---@param body    string
+---@param status  number
+---@param headers table
+---
+function _M.response(body, status, headers)
+    status = status or ngx.HTTP_OK
+    status = tonumber(status)
+    if ext.isTable(headers) then
+        for key,value in pairs(headers) do
+            ngx.header[ key ] = value
+        end
+    end
+
+    ngx.status = status
+    ngx.say(body)
+    ngx.eof()
+    ngx.exit(status)
 end
 
 return _M
