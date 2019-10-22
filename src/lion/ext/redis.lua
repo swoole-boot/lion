@@ -65,7 +65,8 @@ function _M:redis()
     return self.client
 end
 
---{{{ 1. list
+
+--region 1. list
 ---@param key string
 ---@return  number    the list length
 ---
@@ -98,18 +99,32 @@ end
 function _M:lindex(key, index)
     return self:redis():lindex(key, index)
 end
---}}}
+--endregion
 
+--region 2.script
+---
+---@param cmd string
+---@param ...
+---
 function _M:script(cmd, ...)
     return self:redis():script(cmd, ...)
 end
 
+---
+---@param script string
+---@param ...
+---
 function _M:eval(script)
     return self:redis():eval(script)
 end
 
+---
+---@param hash string
+---@param ...
+---
 function _M:evalSha(hash, ...)
     return self:redis():evalSha(hash, ...)
 end
+--endregion
 
 return _M
