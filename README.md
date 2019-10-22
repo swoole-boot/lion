@@ -9,7 +9,7 @@
 * [nginx进程管理](#nginx进程管理)
 * [压力测试](#压力测试)
 * [traffic限流与降级](#traffic限流与降级)
-* [coroutine底层基于ngx.thread](#coroutine底层基于ngx.thread)
+* [coroutine](#coroutine)
 * [nginx-lua生命周期](#nginx-lua生命周期)
 
 服务基础架构设计
@@ -154,8 +154,10 @@ traffic限流与降级
 
 [回到目录](#目录)
 
-coroutine底层基于ngx.thread 
-==========================
+coroutine 
+=========
+
+* 基于ngx.thread
 
 ## lion.ext.thread.multi的使用
 
