@@ -6,6 +6,11 @@
 * [服务基础架构设计](#服务基础架构设计)
 * [openresty安装教程](#openresty安装教程)
 * [lion项目目录](#lion项目目录)
+* [nginx进程管理](#nginx进程管理)
+* [压力测试](#压力测试)
+* [traffic限流与降级](#traffic限流与降级)
+* [coroutine底层基于ngx.thread](#coroutine底层基于ngx.thread)
+* [nginx-lua生命周期](#nginx-lua生命周期)
 
 服务基础架构设计
 ================
@@ -60,7 +65,8 @@ lion项目目录
   -- nginx.sh           nginx进程管理工具
 ```
 
-## 4.nginx进程管理
+nginx进程管理
+============
 
 ```bash
 #启动
@@ -73,27 +79,30 @@ lion项目目录
 /yourpath/lion/nginx.sh restart
 ```
 
-## 5.压力测试
+[回到目录](#目录)
 
-### 5.1 调用端配置
+压力测试
+=======
+
+## 调用端配置
 
 |工具|操作系统|CPU|内存|
 |:--|:--|:--|:--|
 |jmeter|Windows 10专业版|Intel(R) Core(TM) i7-8700 CPU @ 3.2GHz|16.0 GB|
 
-### 5.2 lion服务端配置
+## lion服务端配置
 
 |openresty版本|操作系统|CPU|内存|
 |:------------|:------|:--|:---|
 |1.15.8.2|CentOS Linux release 7.2.1511 (Core)|Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz 4核|8.0 GB|
 
-### 5.3 参数
+## 参数
 
 ![线程配置](https://github.com/swoole-boot/lion/blob/master/img/jmeter.png?raw=true)
 
 ![地址](https://github.com/swoole-boot/lion/blob/master/img/jmeter-url.png?raw=true)
 
-## 5.4 测试结果
+## 测试结果
 
 * lion服务端cpu占用情况：
 
@@ -107,20 +116,23 @@ lion项目目录
 
 ![汇总](https://github.com/swoole-boot/lion/blob/master/img/census.png?raw=true)
 
-### 5.5 结果分析
+## 结果分析
 
 * 测试过程中，lion服务器还有其他docker容器和服务，真实的吞吐量应该比测试结果还要高一些
 * 通过响应时间曲线可以看到平均响应时间远不到1毫秒
 * 测试过程，CPU占用51.55%
 * 总样本数量为828592，100%成功，吞吐量约1.33万/秒
 
-## 6.traffic限流与降级
+[回到目录](#目录)
 
-### 6.1 lion.limit.traffic的使用,目前实现了基于redis的限速
+traffic限流与降级
+================
 
-#### 6.1.1 ngx
+## lion.limit.traffic的使用,目前实现了基于redis的限速
 
-#### 6.1.2 redis,使用redis作为限速，推荐使用consul作为限速配置中心
+### ngx
+
+### redis,使用redis作为限速，推荐使用consul作为限速配置中心
 
 * consul默认配置使用kv,默认key为/kv/lion-gateway/rate-limit，配置示例值：
 
@@ -140,10 +152,12 @@ lion项目目录
 }
 ```
 
-## 7.coroutine 协程，底层基于ngx.thread 
-- [coroutine 协程，底层基于ngx.thread] (#coroutine-协程,底层基于ngx.thread)
+[回到目录](#目录)
 
-### 7.1 lion.ext.thread.multi的使用
+coroutine底层基于ngx.thread 
+==========================
+
+## lion.ext.thread.multi的使用
 
 ```lua
 local function func1(param)
@@ -174,11 +188,16 @@ local result = require("lion.ext.thread").multi({
 }
 ```
 
-### 7.2分析：
+## 分析：
 
 * func1和匿名函数是并发执行，执行总时间为MAX(func1,匿名函数)，以上代码总时间为5
 * lion.ext.thread.multi返回结果和传入参数顺序一致，和执行时间无关
 
-## nginx-lua生命周期
+[回到目录](#目录)
+
+nginx-lua生命周期
+================
 
 ![image](https://github.com/swoole-boot/lion/blob/master/life.png?raw=true)
+
+[回到目录](#目录)
