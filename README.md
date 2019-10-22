@@ -100,6 +100,70 @@ yum install pcre-devel openssl-devel gcc curl
 * 测试过程，CPU占用51.55%
 * 总样本数量为828592，100%成功，吞吐量约1.33万/秒
 
-## 6.nginx-lua生命周期
+## 6.traffic限流与降级
+
+### 6.1 lion.limit.traffic的使用,目前实现了基于redis的限速
+
+#### 6.1.1 ngx
+
+#### 6.1.2 redis,使用redis作为限速，推荐使用consul作为限速配置中心
+
+* consul默认配置使用kv,默认key为/kv/lion-gateway/rate-limit，配置示例值：
+
+```json
+{
+  "driver":{
+  	"class":"lion.limit.redis",
+    "host":"192.168.1.128",
+    "port":"6379",
+    "auth":"123456",
+    "db":"1"
+  },
+  "rules":[
+    {"path":"product/45.html","type":"ip","zone":"1","limit":"60","error_status":"200"},
+  	{"path":"/","type":"all","zone":"6","limit":"10","error_result":"{\"code\":\"200\",\"data\":\"\",\"msg\":\"晚点再来\"}","error_status":"200"}
+  ]
+}
+```
+
+## 7.coroutine 协程，底层基于ngx.thread
+
+### 7.1 lion.ext.thread.multi的使用
+
+```lua
+local function func1(param)
+    ngx.sleep(5)
+    return param.time
+end
+
+local result = require("lion.ext.thread").multi({
+    {
+        func=func1,
+        param={
+            time = ngx.time()
+        }
+    },
+    {
+        --- 传匿名函数
+        func=function()
+            ngx.sleep(4)
+            return "func2"
+        end
+    }
+})
+
+---result:
+{
+    { true, 1571732981 },
+    { true, "func2" }
+}
+```
+
+### 7.2分析：
+
+* func1和匿名函数是并发执行，执行总时间为MAX(func1,匿名函数)，以上代码总时间为5
+* lion.ext.thread.multi返回结果和传入参数顺序一致，和执行时间无关
+
+## nginx-lua生命周期
 
 ![image](https://github.com/swoole-boot/lion/blob/master/life.png?raw=true)
