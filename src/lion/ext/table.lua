@@ -29,7 +29,6 @@ function _M.merge(...)
                 else
                     table.insert(origin,value)
                 end
-
             end
         end
     end
