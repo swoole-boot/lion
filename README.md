@@ -134,6 +134,10 @@ traffic限流与降级
 
 ### redis,使用redis作为限速，推荐使用consul作为限速配置中心
 
+* 限速算法
+
+![traffic](https://github.com/swoole-boot/lion/blob/master/img/traffic.png?raw=true)
+
 * consul默认配置使用kv,默认key为/kv/lion-gateway/rate-limit，配置示例值：
 
 ```json
