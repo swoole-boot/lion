@@ -134,6 +134,34 @@ traffic限流与降级
 
 ### redis,使用redis作为限速，推荐使用consul作为限速配置中心
 
+#### consul默认配置使用kv,默认key为/kv/lion-gateway/rate-limit，配置完毕即可对响应path进行限速，配置示例值：
+
+```json
+{
+  "driver":{
+  	"class":"lion.limit.redis",
+    "host":"192.168.1.128",
+    "port":"6379",
+    "auth":"123456",
+    "db":"1"
+  },
+  "rules":[
+    {"path":"product/45.html","type":"ip","zone":"1","limit":"60","error_status":"200"},
+  	{"path":"/","type":"all","zone":"6","limit":"10","error_result":"{\"code\":\"200\",\"data\":\"\",\"msg\":\"晚点再来\"}","error_status":"200"}
+  ]
+}
+```
+
+|rules属性|含义|
+|:--------|:---|
+|path| `$request_uri`|
+|type|`ip`表示针对`ip`进行限速，`all`表示接口整体限速|
+|zone| 时间区间，单位s|
+|limit| 限速数量，如果需要`降级`，将`limit`设置为0即可，如果需要自定义响应内容，配置`error_result`即可|
+|error_result| 自定义响应内容|
+|error_status |`http` `response`状态码|
+
+
 * 限速算法
 
 ![traffic](https://github.com/swoole-boot/lion/blob/master/img/traffic.png?raw=true)
@@ -171,24 +199,6 @@ else
         return 0
     end
 end
-```
-
-* consul默认配置使用kv,默认key为/kv/lion-gateway/rate-limit，配置示例值：
-
-```json
-{
-  "driver":{
-  	"class":"lion.limit.redis",
-    "host":"192.168.1.128",
-    "port":"6379",
-    "auth":"123456",
-    "db":"1"
-  },
-  "rules":[
-    {"path":"product/45.html","type":"ip","zone":"1","limit":"60","error_status":"200"},
-  	{"path":"/","type":"all","zone":"6","limit":"10","error_result":"{\"code\":\"200\",\"data\":\"\",\"msg\":\"晚点再来\"}","error_status":"200"}
-  ]
-}
 ```
 
 [回到目录](#目录)
