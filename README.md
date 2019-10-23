@@ -138,6 +138,41 @@ traffic限流与降级
 
 ![traffic](https://github.com/swoole-boot/lion/blob/master/img/traffic.png?raw=true)
 
+* 由于以上算法要保证并发竞争问题，所以以上算法是通过redis_lua执行，代码也可以通过php-redis调用，核心代码如下：
+```lua
+--限速key
+local key         = ARGV[1]
+
+--限速阈值
+local limit       = ARGV[2]
+limit             = tonumber(limit)
+
+--要求前十个字节是unix时间戳
+local microTimeId = ARGV[3]
+local time        = tonumber(string.sub(microTimeId, 1, 10))
+
+--时间区间
+local zone        = tonumber(ARGV[4])
+
+local length = redis.call("LLEN", key)
+if length < limit then
+    redis.call("LPUSH", key, microTimeId)
+    redis.call("EXPIRE", key, zone + 1)
+    return 1
+else
+    local endId    = redis.call("LINDEX", key, limit - 1)
+    local timespan = time - tonumber(string.sub(endId, 1, 10))
+    if timespan >= zone then
+        redis.call("LPUSH", key, microTimeId)
+        redis.call("EXPIRE", key, zone + 1)
+        redis.call("RPOP", key)
+        return 1
+    else
+        return 0
+    end
+end
+```
+
 * consul默认配置使用kv,默认key为/kv/lion-gateway/rate-limit，配置示例值：
 
 ```json
